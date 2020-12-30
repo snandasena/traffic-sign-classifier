@@ -1,0 +1,47 @@
+
+n_classes = 43
+l_rate = 0.002
+epoches = 65
+batch_size = 125
+display_steps = 50
+flatten = layers.Flatten()
+dropout = layers.Dropout(rate=0.53)
+mu = 0.0
+sigma = 0.1
+
+Train Validatation accuracy: 0.985370
+Test accuracy: 0.916231
+Valid accuracy: 0.932880
+
+_________________________________________________________________________
+
+n_classes = 43
+l_rate = 0.001
+epoches = 70
+batch_size = 125
+display_steps = 50
+flatten = layers.Flatten()
+dropout = layers.Dropout(rate=0.53)
+mu = 0.0
+sigma = 0.1
+
+Train Validatation accuracy: 0.989996
+Test accuracy: 0.920269
+Valid accuracy: 0.925624
+
+---------------------------------------------------------------------------
+
+
+n_classes = 43
+l_rate = 0.002
+epoches = 65
+batch_size = 130
+display_steps = 50
+flatten = layers.Flatten()
+dropout = layers.Dropout(rate=0.53)
+mu = 0.0
+sigma = 0.1
+
+Train Validatation accuracy: 0.987629
+Test accuracy: 0.923832
+Valid accuracy: 0.942630
