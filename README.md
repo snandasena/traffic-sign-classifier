@@ -11,3 +11,13 @@ Number of training examples |34799|
 Number of testing examples |2630 |
 Image data shape |(32, 32, 3)|
 Number of classes |43|
+
+### Exploratory visualization of the dataset
+
+Following are the sample images for the dataset.
+
+![](resources/all-data-rgb.png)
+
+Following is the histogram for labels vs frequecy distribution
+
+![](resources/provided-data-histogram.png )
