@@ -176,4 +176,18 @@ def random_brightness(img):
     
     return dst
     
-```    
+``` 
+
+Here is a sample augmented image
+
+![](resources/sample-aug-img.png)
+
+###### Discussions:  Data augmentation
+
+Data augmentation is increased accurcy of the model, because several classes in the data have far fewer samples than others the model will tend to be biased toward those classes with more samples. I generated augmented images for classes that's frequencies less than or equal to 800.
+
+And following is the new traning data distribution for each clases. 
+
+![](resources/new-data-histro.png)
+
+
