@@ -63,7 +63,8 @@ Following is a sample result for grayscaled images.
 
 ![](resources/all-data-gray.png)
 
-###### Discussions 01: The submission describes the preprocessing techniques used and why these techniques were chosen.
+###### Discussions: Data preprocessing
+
 * Grayscaled RGB images to reduce three color channels to one channel. This will reduce CNN training time and it'll help to identify edges clearly
 * Normalized image data into range [-1, 1]. If we didn't scale our input training vectors, the ranges of our distributions of feature values would likely be different for each feature, and thus the learning rate would cause corrections in each dimension that would differ from one another. We might be over compensating a correction in one weight dimension while undercompensating in another
 
