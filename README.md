@@ -6,8 +6,9 @@ Deep Learning
 ### Dataset Summary & Exploration
 This dataset is indluded German traffic signs. Following is the summary of the data set.
 
-Number of training examples |34799|
-----------------------------|------|
+Summary |       |
+----------------------------|----|
+Number of training examples |34799 |
 Number of testing examples |2630 |
 Image data shape |(32, 32, 3)|
 Number of classes |43|
