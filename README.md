@@ -21,3 +21,6 @@ Following are the sample images for the dataset.
 Following is the histogram for labels vs frequecy distribution
 
 ![](resources/provided-data-histogram.png )
+
+**Min number of image per class:  180**    
+**Max number of image per class:  2010**
