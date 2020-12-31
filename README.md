@@ -27,3 +27,38 @@ Following is the histogram for labels vs frequecy distribution
 
 
 ### Design and Test a Model Architecture
+
+##### Pre-process the dataset 
+
+Grayscle and normalization techniques were used to pre-process image data for image processing pipline.  
+For grayscalling following snipets was used.
+
+```python
+# Graysscale the images - train set
+X_train_rgb = np.copy(X_train)
+X_train_gray = np.sum(X_train / 3, axis=3, keepdims=True)
+
+# Graysscale the images - test set
+X_test_rgb = np.copy(X_test)
+X_test_gray = np.sum(X_test / 3, axis=3, keepdims=True)
+
+# Graysscale the images - valid set
+X_valid_rgb = np.copy(X_valid)
+X_valid_gray = np.sum(X_valid / 3, axis=3, keepdims=True)
+
+```
+
+For normalization following snipets were used.  
+
+```python
+# Normalize train values
+X_train_normalize = (X_train - 128) / 128
+# Normalize test values
+X_test_normalize = (X_test - 128) / 128
+# Normalize valid values
+X_valid_normalize = (X_valid - 128) / 128
+
+```
+Following is a sample result for grayscaled images.
+
+![](resources/all-data-gray.png)
