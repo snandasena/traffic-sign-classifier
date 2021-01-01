@@ -330,5 +330,10 @@ I selected five German road traffic images to test with trained model. And alos 
 
 ###### Discussions: Performance on New Images
 
-Among the top three guess only top one guess was predicted with **100%** and other two was predicted with **0%** accuracy.
+Among the top three guess only top one guess was predicted with **100%** and other two was predicted with **0%** accuracy. Following are the results for selected test images.
 
+![](resources/predict-1.png)
+![](resources/predict-2.png)
+![](resources/predict-3.png)
+![](resources/predict-4.png)
+![](resources/predict-5.png)
