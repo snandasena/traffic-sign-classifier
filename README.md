@@ -316,4 +316,19 @@ Here I used Tensorflow2 eager approch to train the model and did not save traine
 Test a Model on New Images
 ---
 
+Following are the selected new images for testing.
+
+![](resources/test-new-imgs.png)
+
+Following are the preprocessed test images.
+
+![](resources/test-new-imgs-gray.png)
+
+###### Discussions: Acquiring New Images
+
+I selected five German road traffic images to test with trained model. And alos I select top three geuesses from predicted labels. 
+
+###### Discussions: Performance on New Images
+
+Among the top three guess only top one guess was predicted with **100%** and other two was predicted with **0%** accuracy.
 
