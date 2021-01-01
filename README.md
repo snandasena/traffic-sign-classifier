@@ -6,7 +6,7 @@ Deep Learning
 Dataset Summary & Exploration
 ---
 
-This dataset is indluded German traffic signs. Following is the summary of the data set.
+This dataset includes German traffic signs. Following is the summary of the data set.
 
 Summary |       |
 ----------------------------|----|
@@ -21,7 +21,7 @@ Following are the sample images for the dataset.
 
 ![](resources/all-data-rgb.png)  
 
-Following is the histogram for labels vs frequecy distribution
+Following is the histogram for labels vs frequency distribution
 
 ![](resources/provided-data-histogram.png )  
 
@@ -34,8 +34,8 @@ Design and Test a Model Architecture
 
 #### Pre-process the dataset 
 
-Grayscle and normalization techniques were used to pre-process image data for image processing pipline.  
-For grayscalling following snipets was used.
+Grayscale and normalization techniques were used to pre-process image data for the image processing pipeline.
+For grayscale following snippets were used.
 
 ```python
 # Graysscale the images - train set
@@ -52,7 +52,7 @@ X_valid_gray = np.sum(X_valid / 3, axis=3, keepdims=True)
 
 ```
 
-For normalization following snipets were used.  
+For normalization following snippets were used.
 
 ```python
 # Normalize train values
@@ -64,19 +64,18 @@ X_valid_normalize = (X_valid - 128) / 128
 
 ```
 
-Following is a sample result for grayscaled images.
+Following is a sample result for grayscale images.
 
 ![](resources/all-data-gray.png)
 
 ###### Discussions: Data Preprocessing
 
-* Grayscaled RGB images to reduce three color channels to one channel. This will reduce CNN training time and it'll help to identify edges clearly
-* Normalized image data into range [-1, 1]. If we didn't scale our input training vectors, the ranges of our distributions of feature values would likely be different for each feature, and thus the learning rate would cause corrections in each dimension that would differ from one another. We might be over compensating a correction in one weight dimension while undercompensating in another
+* Grayscaled RGB images to reduce three color channels to one channel. This will reduce CNN training time, and it'll help to identify edges clearly
+* Normalized image data into the range [-1, 1]. If we didn't scale our input training vectors, the ranges of our distributions of feature values would likely be different for each feature, and thus the learning rate would cause corrections in each dimension that would differ from one another. We might be over compensating a correction in one weight dimension while undercompensating in another.
 
 ##### Image Data Augmentation
-Image data augmentation is a technique that can be used to artificially expand the size of a training dataset by creating modified versions of images in the dataset. Following image processing techniques will be used to augmentations for images. Following common augmentation techinues will be used to do image data augmentation.
+Image data augmentation is a technique that can be used to artificially expand the size of a training dataset by creating modified versions of images in the dataset. Following image processing techniques will be used to augmentations for images. Following common augmentation techniques will be used to do image data augmentation.
 
-Following augmentation techniques were used to do image data augmentation.
 
 ###### Translation
 
@@ -188,9 +187,9 @@ Here is a sample augmented image
 
 ###### Discussions:  Data augmentation
 
-Data augmentation is increased accurcy of the model, because several classes in the data have far fewer samples than others the model will tend to be biased toward those classes with more samples. I generated augmented images for classes that's frequencies less than or equal to 800.
+Data augmentation increased accuracy of the model because several classes in the data have far fewer samples than others. The model will tend to be biased toward those classes with more samples. I generated augmented images for classes that's frequencies less than or equal to 800.
 
-And following is the new traning data distribution for each clases. 
+And the following is the new training data distribution for each class.
 
 ![](resources/new-data-histro.png)
 
@@ -279,7 +278,7 @@ def conv_net(x):
 
 ###### Discussions: Model Architecture
 
-This arcchitecture was selected after evaluation LeNet lab session and after playing it with diffent hyparams. This was performed well without a GPU envirments and the time taken to train this model is quit less. Following are layers and activations.
+This architecture was selected after evaluation LeNet lab session and after playing it with different hyperparameters. This was performed well without a GPU environment and the time is taken to train this model is quite less. Following are layers and activations.
 
 01. 5x5 convolution layer1 (32x32x1 in, 28x28x6 out)
 02. ReLU activation
@@ -296,7 +295,7 @@ This arcchitecture was selected after evaluation LeNet lab session and after pla
 
 ###### Discussion: Model Training
 
-Adam optimizer was used for gradient optimization and I trained many times with different hyperparameters and different augmented data. Following are last trained hyper pamarameters. Also I uploaded my final train dataset to  [G-drive](https://drive.google.com/file/d/1ZXq4mr5SYKbAs-9lFElq9AEcP1y4Vc4s/view?usp=sharing) (this is compressed using gzip, need to be uncompressed before use it) for further verification for my validation set accuracy.  
+Adam optimizer was used for gradient optimization, and I trained many times with different hyperparameters and different augmented data. Following are last trained hyperparameters. Also, I uploaded my final train dataset to  [G-drive](https://drive.google.com/file/d/1ZXq4mr5SYKbAs-9lFElq9AEcP1y4Vc4s/view?usp=sharing) (this is compressed using gzip, need to be uncompressed before use it) for further verification for my validation set accuracy.  
 
 Following are final hyperparameters.
 
@@ -311,7 +310,7 @@ Following are final hyperparameters.
 
 ###### Discussion: Solution Approach
 
-Here I used Tensorflow2 eager approch to train the model and did not save trained model. The accuracy of the `validation` test was **0.934921**. I have played Udacity lab sessions and learnt some other techniques from publically availabe resoures(I will include these referecences in references section). I had to trained this model hundrend times tune parameters, since this is a low level approach and I did not used other supportive hyperparameters tune techniques for this project. Last run logs can be found [here](final_trained_logs.txt).
+Here I used Tensorflow2 eager approach to train the model and did not save the trained model. The accuracy of the `validation` test was **0.934921**. I have played Udacity lab sessions and learned some other techniques from publicly available resources(I will include these references in the reference section). I had to train this model a hundred times to tune parameters since this is a low-level approach, and I did not use other supportive hyperparameters tune techniques for this project. Last run logs can be found [here](final_trained_logs.txt).
 
 Test a Model on New Images
 ---
@@ -326,11 +325,11 @@ Following are the preprocessed test images.
 
 ###### Discussions: Acquiring New Images
 
-I selected five German road traffic images to test with trained model. And alos I select top three geuesses from predicted labels. 
+I selected five German road traffic images to test with the trained model. And also I selected the top three guesses from predicted labels.
 
 ###### Discussions: Performance on New Images
 
-Among the top three guess only top one guess was predicted with **100%** and other two was predicted with **0%** accuracy. Following are the results for selected test images.
+Among the top three guesses only top one guess was predicted with **100%** and the other two was predicted with **0%** accuracy. Following are the results for selected test images.
 
 ![](resources/predict-1.png)
 ![](resources/predict-2.png)
