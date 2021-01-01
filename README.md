@@ -340,7 +340,7 @@ Among the top three guess only top one guess was predicted with **100%** and oth
 
 ###### Discussions: Model Certainty - Softmax Probabilities
 
-Following are the softmax probabilities and plots for top five predicted labels.
+This very high level of certainty, along with achieving **100%** accuracy, on the newly introduced real-world data is indicative of a model that performs very well. Following are the softmax probabilities and plots for top five predicted labels.
 
 ![](resources/softmax-prob.png )
 
