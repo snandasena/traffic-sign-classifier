@@ -6,8 +6,9 @@ Deep Learning
 ### Dataset Summary & Exploration
 This dataset is indluded German traffic signs. Following is the summary of the data set.
 
-Number of training examples |34799|
-----------------------------|------|
+Summary |       |
+----------------------------|----|
+Number of training examples |34799 |
 Number of testing examples |2630 |
 Image data shape |(32, 32, 3)|
 Number of classes |43|
@@ -28,7 +29,7 @@ Following is the histogram for labels vs frequecy distribution
 
 ### Design and Test a Model Architecture
 
-##### Pre-process the dataset 
+#### Pre-process the dataset 
 
 Grayscle and normalization techniques were used to pre-process image data for image processing pipline.  
 For grayscalling following snipets was used.
@@ -69,7 +70,7 @@ Following is a sample result for grayscaled images.
 * Grayscaled RGB images to reduce three color channels to one channel. This will reduce CNN training time and it'll help to identify edges clearly
 * Normalized image data into range [-1, 1]. If we didn't scale our input training vectors, the ranges of our distributions of feature values would likely be different for each feature, and thus the learning rate would cause corrections in each dimension that would differ from one another. We might be over compensating a correction in one weight dimension while undercompensating in another
 
-#### Image Data Augmentation
+##### Image Data Augmentation
 Image data augmentation is a technique that can be used to artificially expand the size of a training dataset by creating modified versions of images in the dataset. Following image processing techniques will be used to augmentations for images. Following common augmentation techinues will be used to do image data augmentation.
 
 Following augmentation techniques were used to do image data augmentation.
@@ -191,3 +192,4 @@ And following is the new traning data distribution for each clases.
 ![](resources/new-data-histro.png)
 
 
+#### Model Architecture
