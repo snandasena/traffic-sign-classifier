@@ -195,3 +195,80 @@ And following is the new traning data distribution for each clases.
 #### Model Architecture
 
 ![](resources/cnn-architecture.png)
+
+Following is the Python implementation for CNN model architecture.
+
+```python
+# Create a some wrapper
+def conv2d(x, W, b, stride=1):
+    # Conv2D wrapper, with bias and relu activation
+    x = tf.nn.conv2d(x, W, strides=[1, stride, stride, 1], padding='VALID')
+    x = tf.nn.bias_add(x, b)
+
+    return tf.nn.relu(x)
+```
+
+```python
+def maxpoll2d(x, k=2):
+    # Maxpool2D wrapper
+    return tf.nn.max_pool(x, ksize=[1, k, k, 1], strides=[1, k, k, 1], padding='VALID')
+    
+```
+
+```python
+random_normal = tf.initializers.RandomNormal(mean=mu, stddev=sigma)
+weights = {
+    'wc1': tf.Variable(random_normal([5, 5, 1, 6])),
+    'wc2': tf.Variable(random_normal([5, 5, 6, 16])),
+    'wd1': tf.Variable(random_normal([5, 5, 16, 400])),
+    'out': tf.Variable(random_normal([800, 43]))
+}
+
+biases = {
+    'bc1': tf.Variable(tf.zeros(6)),
+    'bc2': tf.Variable(tf.zeros(16)),
+    'bd1': tf.Variable(tf.zeros(400)),
+    'out': tf.Variable(tf.zeros(43))
+}
+
+```
+
+```python
+# CNN Architecture
+def conv_net(x):
+    # Convolution layer. Output shape: [-1, 32, 32, 32]
+    x = tf.reshape(x, [-1, 32, 32, 1])
+    # new_size = (input_size - filter_size + 2 x padding_size )/ stride +1
+    # (32 - 5 + 2 * 0)/1 +1 = 27  +1 = 28
+    # 5 x 5 fiter 6
+    # new shape = 28 x 28 x 6
+    # Convolution layer, input shape:[-1,32,32,1]. Output shape: [-1, 28, 28, 6]
+    x = conv2d(x, weights['wc1'], biases['bc1'])
+    # Max pooling(down sampling), input shape[-1,28,28,6]. output shape [-1, 14,14,6]
+    x = maxpoll2d(x, k=2)
+    
+    # Convolution layer, input shape: [-1,14,14,6]. Output shape: [-1, 10,10, 16]
+    x = conv2d(x, weights['wc2'], biases['bc2'])
+
+    # Max pooling(down sampling), input shape[-1,10,10,16]. output shape [-1, 5,5,16]
+    x = maxpoll2d(x, k=2)
+    layer2 = x
+
+    # Convolution layer. Output shape: [-1, 1, 1, 400]
+    x = conv2d(x, weights['wd1'], biases['bd1'])
+
+    # Flatten layer
+    l2_flat = flatten(layer2)
+    x_flat = flatten(x)
+    # Concatanate flattened layers to single size 800 layer
+    res = tf.concat(values=[l2_flat, x_flat], axis=1)
+    
+    # Apply dropout
+    x = dropout(res, training=True)
+
+    # Fully connected layer, output shape [-1, 43]
+    out = tf.add(tf.matmul(x, weights['out']), biases['out'])
+
+    # Apply softmax to normalize the logists to a probability distribution
+    return tf.nn.softmax(out)
+```
