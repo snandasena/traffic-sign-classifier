@@ -344,3 +344,23 @@ This very high level of certainty, along with achieving **100%** accuracy, on th
 
 ![](resources/softmax-prob.png )
 
+References
+---
+* https://www.udacity.com/course/introduction-to-computer-vision--ud810
+* https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013
+* http://cs231n.stanford.edu/
+* https://deeplearning.mit.edu/
+* https://www.youtube.com/watch?v=iaSUYvmCekI
+* https://www.youtube.com/watch?v=DAOcjicFr1Y
+* https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/
+* https://stats.stackexchange.com/questions/185853/why-do-we-need-to-normalize-the-images-before-we-put-them-into-cnn
+* https://curiousily.com/posts/image-data-augmentation-for-tensorflow-2-keras-and-pytorch-with-albumentations-in-python/
+* https://en.wikipedia.org/wiki/Histogram_equalization
+* http://graphics.cs.cmu.edu/courses/15-463/2004_fall/www/Lectures/filtering1.pdf
+* https://docs.opencv.org/4.4.0/d4/d61/tutorial_warp_affine.html
+
+
+Acknowledgments
+---
+Big thank you to [Udacity](https://www.udacity.com) for providing the template code for this project.
+
