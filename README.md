@@ -19,11 +19,11 @@ Number of classes |43|
 
 Following are the sample images for the dataset.
 
-![](resources/all-data-rgb.png)
+![](resources/all-data-rgb.png)  
 
 Following is the histogram for labels vs frequecy distribution
 
-![](resources/provided-data-histogram.png )
+![](resources/provided-data-histogram.png )  
 
 **Min number of image per class:  180**    
 **Max number of image per class:  2010**
