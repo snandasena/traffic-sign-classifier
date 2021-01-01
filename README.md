@@ -3,7 +3,9 @@ Deep Learning
 ## Project: Build a Traffic Sign Recognition Classifier
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-### Dataset Summary & Exploration
+Dataset Summary & Exploration
+---
+
 This dataset is indluded German traffic signs. Following is the summary of the data set.
 
 Summary |       |
@@ -27,7 +29,8 @@ Following is the histogram for labels vs frequecy distribution
 **Max number of image per class:  2010**
 
 
-### Design and Test a Model Architecture
+Design and Test a Model Architecture
+---
 
 #### Pre-process the dataset 
 
@@ -309,4 +312,8 @@ Following are final hyperparameters.
 ###### Discussion: Solution Approach
 
 Here I used Tensorflow2 eager approch to train the model and did not save trained model. The accuracy of the `validation` test was **0.934921**. I have played Udacity lab sessions and learnt some other techniques from publically availabe resoures(I will include these referecences in references section). I had to trained this model hundrend times tune parameters, since this is a low level approach and I did not used other supportive hyperparameters tune techniques for this project. Last run logs can be found [here](final_trained_logs.txt).
+
+Test a Model on New Images
+---
+
 
