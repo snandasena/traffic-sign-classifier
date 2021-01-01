@@ -274,7 +274,9 @@ def conv_net(x):
 ``` 
 
 
-###### Discussions: This arcchitecture was selected after evaluation LeNet lab session and after playing it with diffent hyparams. This was performed well without a GPU envirments and the time taken to train this model is quit less. Following are layers and activations.
+###### Discussions: Model Architecture
+
+This arcchitecture was selected after evaluation LeNet lab session and after playing it with diffent hyparams. This was performed well without a GPU envirments and the time taken to train this model is quit less. Following are layers and activations.
 
 01. 5x5 convolution layer1 (32x32x1 in, 28x28x6 out)
 02. ReLU activation
