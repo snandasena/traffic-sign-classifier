@@ -293,6 +293,6 @@ This arcchitecture was selected after evaluation LeNet lab session and after pla
 
 ###### Discussion: Model training
 
-Adam optimizer was used for gradient optimization and I trained many times with different hyperparameters and different augmented data. Following are last trained hyper pamarameters. Also I uploaded my final train dataset to Git [last train data](resources/resources/data/train.p.tar.gz) (this is compressed using gzip, need to be uncompressed before train) for further verification for my validation set accuracy.  
+Adam optimizer was used for gradient optimization and I trained many times with different hyperparameters and different augmented data. Following are last trained hyper pamarameters. Also I uploaded my final train dataset to  [G-drive](https://drive.google.com/file/d/1ZXq4mr5SYKbAs-9lFElq9AEcP1y4Vc4s/view?usp=sharing) (this is compressed using gzip, need to be uncompressed before use it) for further verification for my validation set accuracy.  
 
 Final hyper parameters
