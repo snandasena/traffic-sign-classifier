@@ -14840,15 +14840,6 @@ Nomalized shape of an image:  (32, 32, 1)
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5 id="Discussions-01:-The-submission-describes-the-preprocessing-techniques-used-and-why-these-techniques-were-chosen.">Discussions 01: The submission describes the preprocessing techniques used and why these techniques were chosen.<a class="anchor-link" href="#Discussions-01:-The-submission-describes-the-preprocessing-techniques-used-and-why-these-techniques-were-chosen.">&#182;</a></h5><ul>
-<li>Grayscaled RGB images to reduce three color channels to one channel. This will reduce CNN training time and it'll help to identify images' shapes(lines, curves, other polygins) crearly.</li>
-<li>Normalized image data into range [-1, 1]. If we didn't scale our input training vectors, the ranges of our distributions of feature values would likely be different for each feature, and thus the learning rate would cause corrections in each dimension that would differ (proportionally speaking) from one another. We might be over compensating a correction in one weight dimension while undercompensating in another. </li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h4 id="Image-Data-Augmentation">Image Data Augmentation<a class="anchor-link" href="#Image-Data-Augmentation">&#182;</a></h4><p>Image data augmentation is a technique that can be used to artificially expand the size of a training dataset by creating modified versions of images in the dataset. Following image processing techniques will be used to augmentations for images. Following common augmentation techinues will be used to do image data augmentation.</p>
 
 </div>
@@ -15310,14 +15301,6 @@ New training data shape - y_validation:  (9296,)
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5 id="Discussion-02:--Data-augmentation,--traning-data-spliting-for-training-and-validation">Discussion 02:  Data augmentation,  traning data spliting for training and validation<a class="anchor-link" href="#Discussion-02:--Data-augmentation,--traning-data-spliting-for-training-and-validation">&#182;</a></h5><ul>
-<li>Data augmentation is increased accurcy of the model, because several classes in the data have far fewer samples than others the model will tend to be biased toward those classes with more samples. I generated augmented images for classes that's frequencies less than or equal to 800.</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Model-Architecture">Model Architecture<a class="anchor-link" href="#Model-Architecture">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -15399,13 +15382,9 @@ New training data shape - y_validation:  (9296,)
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">random_normal</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">RandomNormal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
 <span class="n">weights</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1"># Conv layer 1: 5x5 conv, 1 input, 32 filters</span>
     <span class="s1">&#39;wc1&#39;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">])),</span>
-<span class="c1">#     Conv layer 2: 5x5 conv, 32 inouts, 64 filters</span>
     <span class="s1">&#39;wc2&#39;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">])),</span>
-    <span class="c1"># Fully connected layer: 7x7x64 inputs, 1024 units</span>
     <span class="s1">&#39;wd1&#39;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">400</span><span class="p">])),</span>
-    <span class="c1"># FC output layer: 1024 inputs, 43 units</span>
     <span class="s1">&#39;out&#39;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">800</span><span class="p">,</span> <span class="mi">43</span><span class="p">]))</span>
 <span class="p">}</span>
 
