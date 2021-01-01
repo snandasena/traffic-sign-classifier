@@ -295,4 +295,12 @@ This arcchitecture was selected after evaluation LeNet lab session and after pla
 
 Adam optimizer was used for gradient optimization and I trained many times with different hyperparameters and different augmented data. Following are last trained hyper pamarameters. Also I uploaded my final train dataset to  [G-drive](https://drive.google.com/file/d/1ZXq4mr5SYKbAs-9lFElq9AEcP1y4Vc4s/view?usp=sharing) (this is compressed using gzip, need to be uncompressed before use it) for further verification for my validation set accuracy.  
 
-Final hyper parameters
+Following are final hyperparameters.
+
+* epoches = 50
+* batch_size = 130
+* learning_rate = 0.0009
+* optimizer = Adam
+* dropout = 0.52
+* $mu$ = 0.0
+* sigma = 0.1
