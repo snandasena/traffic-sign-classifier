@@ -302,5 +302,5 @@ Following are final hyperparameters.
 * learning_rate = 0.0009
 * optimizer = Adam
 * dropout = 0.52
-* $mu$ = 0.0
+* mu = 0.0
 * sigma = 0.1
