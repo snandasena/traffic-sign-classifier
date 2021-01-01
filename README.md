@@ -358,6 +358,7 @@ References
 * https://en.wikipedia.org/wiki/Histogram_equalization
 * http://graphics.cs.cmu.edu/courses/15-463/2004_fall/www/Lectures/filtering1.pdf
 * https://docs.opencv.org/4.4.0/d4/d61/tutorial_warp_affine.html
+* https://github.com/jeremy-shannon/CarND-Traffic-Sign-Classifier-Project
 
 
 Acknowledgments
