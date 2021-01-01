@@ -193,3 +193,5 @@ And following is the new traning data distribution for each clases.
 
 
 #### Model Architecture
+
+![](resources/cnn-architecture.png)
