@@ -3,7 +3,9 @@ Deep Learning
 ## Project: Build a Traffic Sign Recognition Classifier
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-### Dataset Summary & Exploration
+Dataset Summary & Exploration
+---
+
 This dataset is indluded German traffic signs. Following is the summary of the data set.
 
 Summary |       |
@@ -17,17 +19,18 @@ Number of classes |43|
 
 Following are the sample images for the dataset.
 
-![](resources/all-data-rgb.png)
+![](resources/all-data-rgb.png)  
 
 Following is the histogram for labels vs frequecy distribution
 
-![](resources/provided-data-histogram.png )
+![](resources/provided-data-histogram.png )  
 
 **Min number of image per class:  180**    
 **Max number of image per class:  2010**
 
 
-### Design and Test a Model Architecture
+Design and Test a Model Architecture
+---
 
 #### Pre-process the dataset 
 
@@ -193,3 +196,139 @@ And following is the new traning data distribution for each clases.
 
 
 #### Model Architecture
+
+![](resources/cnn-architecture.png)
+
+Following is the Python implementation for CNN model architecture.
+
+```python
+# Create a some wrapper
+def conv2d(x, W, b, stride=1):
+    # Conv2D wrapper, with bias and relu activation
+    x = tf.nn.conv2d(x, W, strides=[1, stride, stride, 1], padding='VALID')
+    x = tf.nn.bias_add(x, b)
+
+    return tf.nn.relu(x)
+```
+
+```python
+def maxpoll2d(x, k=2):
+    # Maxpool2D wrapper
+    return tf.nn.max_pool(x, ksize=[1, k, k, 1], strides=[1, k, k, 1], padding='VALID')
+    
+```
+
+```python
+random_normal = tf.initializers.RandomNormal(mean=mu, stddev=sigma)
+weights = {
+    'wc1': tf.Variable(random_normal([5, 5, 1, 6])),
+    'wc2': tf.Variable(random_normal([5, 5, 6, 16])),
+    'wd1': tf.Variable(random_normal([5, 5, 16, 400])),
+    'out': tf.Variable(random_normal([800, 43]))
+}
+
+biases = {
+    'bc1': tf.Variable(tf.zeros(6)),
+    'bc2': tf.Variable(tf.zeros(16)),
+    'bd1': tf.Variable(tf.zeros(400)),
+    'out': tf.Variable(tf.zeros(43))
+}
+
+```
+
+```python
+# CNN Architecture
+def conv_net(x):
+    # Convolution layer. Output shape: [-1, 32, 32, 32]
+    x = tf.reshape(x, [-1, 32, 32, 1])
+    # new_size = (input_size - filter_size + 2 x padding_size )/ stride +1
+    # (32 - 5 + 2 * 0)/1 +1 = 27  +1 = 28
+    # 5 x 5 fiter 6
+    # new shape = 28 x 28 x 6
+    # Convolution layer, input shape:[-1,32,32,1]. Output shape: [-1, 28, 28, 6]
+    x = conv2d(x, weights['wc1'], biases['bc1'])
+    # Max pooling(down sampling), input shape[-1,28,28,6]. output shape [-1, 14,14,6]
+    x = maxpoll2d(x, k=2)
+    
+    # Convolution layer, input shape: [-1,14,14,6]. Output shape: [-1, 10,10, 16]
+    x = conv2d(x, weights['wc2'], biases['bc2'])
+
+    # Max pooling(down sampling), input shape[-1,10,10,16]. output shape [-1, 5,5,16]
+    x = maxpoll2d(x, k=2)
+    layer2 = x
+
+    # Convolution layer. Output shape: [-1, 1, 1, 400]
+    x = conv2d(x, weights['wd1'], biases['bd1'])
+
+    # Flatten layer
+    l2_flat = flatten(layer2)
+    x_flat = flatten(x)
+    # Concatanate flattened layers to single size 800 layer
+    res = tf.concat(values=[l2_flat, x_flat], axis=1)
+    
+    # Apply dropout
+    x = dropout(res, training=True)
+
+    # Fully connected layer, output shape [-1, 43]
+    out = tf.add(tf.matmul(x, weights['out']), biases['out'])
+
+    # Apply softmax to normalize the logists to a probability distribution
+    return tf.nn.softmax(out)
+``` 
+
+
+###### Discussions: Model Architecture
+
+This arcchitecture was selected after evaluation LeNet lab session and after playing it with diffent hyparams. This was performed well without a GPU envirments and the time taken to train this model is quit less. Following are layers and activations.
+
+01. 5x5 convolution layer1 (32x32x1 in, 28x28x6 out)
+02. ReLU activation
+03. 2x2 max pool layer1 (28x28x6 in, 14x14x6 out)
+04. 5x5 convolution layer2 (14x14x6 in, 10x10x16 out)
+05. ReLU activation
+06. 2x2 max pool layer2 (10x10x16 in, 5x5x16 out)
+07. 5x5 convolution layer3 (5x5x6 in, 1x1x400 out)
+08. ReLu activation
+09. Flatten layers from numbers 8 (1x1x400 -> 400) and 6 (5x5x16 -> 400)
+10. Concatenate flattened layers to a single size-800 layer
+11. Dropout layer
+12. Fully connected layer (800 in, 43 out)
+
+###### Discussion: Model training
+
+Adam optimizer was used for gradient optimization and I trained many times with different hyperparameters and different augmented data. Following are last trained hyper pamarameters. Also I uploaded my final train dataset to  [G-drive](https://drive.google.com/file/d/1ZXq4mr5SYKbAs-9lFElq9AEcP1y4Vc4s/view?usp=sharing) (this is compressed using gzip, need to be uncompressed before use it) for further verification for my validation set accuracy.  
+
+Following are final hyperparameters.
+
+* epoches = 50
+* batch_size = 130
+* learning_rate = 0.0009
+* optimizer = Adam
+* dropout = 0.52
+* mu = 0.0
+* sigma = 0.1
+
+
+###### Discussion: Solution Approach
+
+Here I used Tensorflow2 eager approch to train the model and did not save trained model. The accuracy of the `validation` test was **0.934921**. I have played Udacity lab sessions and learnt some other techniques from publically availabe resoures(I will include these referecences in references section). I had to trained this model hundrend times tune parameters, since this is a low level approach and I did not used other supportive hyperparameters tune techniques for this project. Last run logs can be found [here](final_trained_logs.txt).
+
+Test a Model on New Images
+---
+
+Following are the selected new images for testing.
+
+![](resources/test-new-imgs.png)
+
+Following are the preprocessed test images.
+
+![](resources/test-new-imgs-gray.png)
+
+###### Discussions: Acquiring New Images
+
+I selected five German road traffic images to test with trained model. And alos I select top three geuesses from predicted labels. 
+
+###### Discussions: Performance on New Images
+
+Among the top three guess only top one guess was predicted with **100%** and other two was predicted with **0%** accuracy.
+
