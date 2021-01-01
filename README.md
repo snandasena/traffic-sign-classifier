@@ -304,3 +304,9 @@ Following are final hyperparameters.
 * dropout = 0.52
 * mu = 0.0
 * sigma = 0.1
+
+
+###### Discussion: Solution Approach
+
+Here I used Tensorflow2 eager approch to train the model and did not save trained model. The accuracy of the `validation` test was **0.934921**. I have played Udacity lab sessions and learnt some other techniques from publically availabe resoures(I will include these referecences in references section). I had to trained this model hundrend times tune parameters, since this is a low level approach and I did not used other supportive hyperparameters tune techniques for this project. Last run logs can be found [here](final_trained_logs.txt).
+
