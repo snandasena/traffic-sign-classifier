@@ -291,3 +291,8 @@ This arcchitecture was selected after evaluation LeNet lab session and after pla
 11. Dropout layer
 12. Fully connected layer (800 in, 43 out)
 
+###### Discussion: Model training
+
+Adam optimizer was used for gradient optimization and I trained many times with different hyperparameters and different augmented data. Following are last trained hyper pamarameters. Also I uploaded my final train dataset to Git [last train data](resources/resources/data/train.p.tar.gz) (this is compressed using gzip, need to be uncompressed before train) for further verification for my validation set accuracy.  
+
+Final hyper parameters
