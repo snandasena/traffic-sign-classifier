@@ -271,4 +271,21 @@ def conv_net(x):
 
     # Apply softmax to normalize the logists to a probability distribution
     return tf.nn.softmax(out)
-```
+``` 
+
+
+###### Discussions: This arcchitecture was selected after evaluation LeNet lab session and after playing it with diffent hyparams. This was performed well without a GPU envirments and the time taken to train this model is quit less. Following are layers and activations.
+
+01. 5x5 convolution layer1 (32x32x1 in, 28x28x6 out)
+02. ReLU activation
+03. 2x2 max pool layer1 (28x28x6 in, 14x14x6 out)
+04. 5x5 convolution layer2 (14x14x6 in, 10x10x16 out)
+05. ReLU activation
+06. 2x2 max pool layer2 (10x10x16 in, 5x5x16 out)
+07. 5x5 convolution layer3 (5x5x6 in, 1x1x400 out)
+08. ReLu activation
+09. Flatten layers from numbers 8 (1x1x400 -> 400) and 6 (5x5x16 -> 400)
+10. Concatenate flattened layers to a single size-800 layer
+11. Dropout layer
+12. Fully connected layer (800 in, 43 out)
+
