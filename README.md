@@ -68,7 +68,7 @@ Following is a sample result for grayscaled images.
 
 ![](resources/all-data-gray.png)
 
-###### Discussions: Data preprocessing
+###### Discussions: Data Preprocessing
 
 * Grayscaled RGB images to reduce three color channels to one channel. This will reduce CNN training time and it'll help to identify edges clearly
 * Normalized image data into range [-1, 1]. If we didn't scale our input training vectors, the ranges of our distributions of feature values would likely be different for each feature, and thus the learning rate would cause corrections in each dimension that would differ from one another. We might be over compensating a correction in one weight dimension while undercompensating in another
@@ -294,7 +294,7 @@ This arcchitecture was selected after evaluation LeNet lab session and after pla
 11. Dropout layer
 12. Fully connected layer (800 in, 43 out)
 
-###### Discussion: Model training
+###### Discussion: Model Training
 
 Adam optimizer was used for gradient optimization and I trained many times with different hyperparameters and different augmented data. Following are last trained hyper pamarameters. Also I uploaded my final train dataset to  [G-drive](https://drive.google.com/file/d/1ZXq4mr5SYKbAs-9lFElq9AEcP1y4Vc4s/view?usp=sharing) (this is compressed using gzip, need to be uncompressed before use it) for further verification for my validation set accuracy.  
 
@@ -337,3 +337,10 @@ Among the top three guess only top one guess was predicted with **100%** and oth
 ![](resources/predict-3.png)
 ![](resources/predict-4.png)
 ![](resources/predict-5.png)
+
+###### Discussions: Model Certainty - Softmax Probabilities
+
+Following are the softmax probabilities and plots for top five predicted labels.
+
+![](resources/softmax-prob.png )
+
